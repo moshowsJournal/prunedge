@@ -18,7 +18,6 @@ const Routes = () => {
   useEffect(() => {
 
   },[]);
-  {console.log("ROUTES--",route)}
   return(
       <PaperProvider theme={theme}>
         <NavigationContainer>
