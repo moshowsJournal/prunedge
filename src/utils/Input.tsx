@@ -26,15 +26,16 @@ const Input = (props : InputProps) => {
         <TextInput
             label={props.label}
             mode={props?.mode || "outlined"}
+            placeholderTextColor={AppColors.gray2}
+            outlineColor={AppColors.gray1}
             style={[
                 {
-                    backgroundColor: AppColors.white,
+                    backgroundColor: AppColors.gray,
                     width: props?.inputWidth ? Width(props.inputWidth) : Width(90),
                     justifyContent:'center',
                     alignSelf:'center',
-                    borderRadius: Width(1.5),
                     marginTop: props?.inputMarginTop ? Height(props.inputMarginTop) : Height(2),
-                    height : Height(props.height || 5.5),
+                    height : Height(props.height || 7),
                     fontSize : Width(4)
                 }
             ]}
@@ -48,6 +49,7 @@ const Input = (props : InputProps) => {
                         fontFamily: Font_Family[700]
                       }
                     },
+                    roundness : Width(3)
                   }
             }
             {...props}

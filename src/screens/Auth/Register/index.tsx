@@ -34,7 +34,13 @@ export default function Register({navigation} : RegisterProps){
     }
     return(
         <Container>
-            <BackHandler />
+            <Container>
+                <TouchableWrapper onPress={()=>null}
+                    size={5}
+                >
+                    <Ionicons name="close-outline" size={Width(3)} color={AppColors.gray} />
+                </TouchableWrapper>
+            </Container>
             <KeyboardAwareScrollView>
                 <Container width={90} horizontalAlignment='center' alignSelf='center'>
                     <Container horizontalAlignment='center' verticalAlignment='center'>
@@ -44,21 +50,22 @@ export default function Register({navigation} : RegisterProps){
                         />
                     </Container>
                     <Container>
-                        <Input label='Full Name' placeholder='Enter Full Name'
+                        <Input label='Name' placeholder='Enter Full Name'
                             onChangeText={(value : string)=>setData({...data, full_name : value})}
                             value={data.full_name}
                         />
                     </Container>
                     <Container>
-                        <Input label='Email Address' placeholder='Enter Email Address'
+                        <Input label='Email' placeholder='Enter Email Address'
                             keyboardType={"email-address"}
                             onChangeText={(value : string)=>setData({...data, email_address : value})}
                             value={data.email_address}
                         />
                     </Container>
                     <Container>
-                        <Input label='Phone Number' placeholder='+234000008900'
-                            keyboardType="number-pad"
+                        <Input label='Password' placeholder='*******'
+                            keyboardType="default"
+                            secureTextEntry={true}
                             onChangeText={(value : string)=>setData({...data, phone_number : value})}
                             value={data.phone_number}
                         />
