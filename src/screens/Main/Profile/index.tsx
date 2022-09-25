@@ -6,6 +6,8 @@ import { Width } from '../../../utils/dimensions';
 import TouchableWrapper from '../../../utils/TouchableWrapper';
 import styles from './styles';
 import { FlatList, Image } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { changeRoute } from '../../../store/routeReducer';
 
 interface ProfileProps{
     navigation : any
@@ -21,6 +23,8 @@ interface PostType{
 }
 export default function Profile({navigation} : ProfileProps){
     const [tab,setTab] = React.useState("Posts")
+    const dispatch = useDispatch()
+
     const PostList : Array<PostType> = [
         {
             title : "Header",
@@ -115,7 +119,7 @@ export default function Profile({navigation} : ProfileProps){
                     <H1 color={AppColors.white} fontSize={3.5} bold={500}>Settings</H1>
                 </TouchableWrapper>
                 <H1 color={AppColors.white} fontSize={6} bold={600}>Profile</H1>
-                <TouchableWrapper onPress={()=>null} isText>
+                <TouchableWrapper onPress={()=>dispatch(changeRoute("Auth"))} isText>
                     <H1 color={AppColors.white} fontSize={3.5} bold={500}>Logout</H1>
                 </TouchableWrapper>
             </Container>
@@ -157,6 +161,7 @@ export default function Profile({navigation} : ProfileProps){
                     <FlatList 
                         data={tab === "Posts" ? PostList : ImageList}
                         renderItem={renderItem}
+                        keyExtractor={(item,i)=>i.toString()}
                     />
                 </Container>
             </Container>
