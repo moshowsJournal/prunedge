@@ -47,11 +47,11 @@ export default function TabBar({navigation} : TabBarProps){
                menus.map((item,i)=> <TouchableWrapper onPress={()=>{
                     setName(item.name)
                     if(item.route) navigation.navigate(item.route)
-               }} 
+                }} 
                     style={styles.button} key={i}
                     rippleColor={AppColors.white}
-               >
-               <Container  backgroundColor={name === item.name ? AppColors.primary : AppColors.gray}
+                >
+                <Container  backgroundColor={name === item.name ? AppColors.primary : AppColors.gray}
                     style={{
                         width : Height(6),
                         height : Height(6)
@@ -59,9 +59,9 @@ export default function TabBar({navigation} : TabBarProps){
                     borderRadius={Width(50)}
                     verticalAlignment='center'
                     horizontalAlignment='center'
-               >
+                >
                     <Ionicons name={item.icon} color={name === item.name ? AppColors.white : AppColors.primary} size={Width(5)} />
-               </Container>
+                </Container>
            </TouchableWrapper>)
            }
         </Container>
