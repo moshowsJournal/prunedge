@@ -30,10 +30,10 @@ export default function Button({
 
 const styles = StyleSheet.create({
     button : {
-        width : Width(40),
+        width : Width(90),
         height : Height(6),
         textAlignVertical : "center",
-        backgroundColor : AppColors.defaultSkin,
+        alignSelf : "center",
         borderRadius : Width(8),
         marginTop : Height(2)
     }

@@ -1,8 +1,10 @@
 import React from "react";
 import { TextInput,DefaultTheme } from "react-native-paper";
 import AppColors from "./colors";
+import { H1 } from "./components";
 import { Height, Width } from "./dimensions";
 import Font_Family from "./fontFamily";
+import TouchableWrapper from "./TouchableWrapper";
 
 interface InputProps{
     placeholder? : string,

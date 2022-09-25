@@ -4,14 +4,19 @@ const AppColors = {
     primary: "#5DB075",
     gray: '#E8E8E8',
     gray1: '#E8E8E8',
-    gray2 : "#BDBDBD"
+    gray2 : "#BDBDBD",
+    gray3 : "#666666",
+    white: '#FFFFFF',
+    black: '#000000',
+
+
     // secondary: '#DAEEFF',
     // info: '#2F80ED',
     // success: '#27AE60',
     // warning: '#E2B93B',
     // error: '#EB5757',
-    // white: '#FFFFFF',
-    // black: '#3E4958',
+    
+    
     // black_1: '#010116',
     // black_2: '#000000',
     // black_3: '#282828',

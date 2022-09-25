@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigation from './AuthNavigation';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { useSelector } from 'react-redux';
-import DrawerNavigation from './DrawerNavigation';
+import BottomNavigation from './BottomNavigation';
 
 const theme = {
   ...DefaultTheme,
@@ -18,15 +18,14 @@ const Routes = () => {
   useEffect(() => {
 
   },[]);
-
+  {console.log("ROUTES--",route)}
   return(
       <PaperProvider theme={theme}>
         <NavigationContainer>
-        <AuthNavigation />
-          {/* {
+          {
             route.name === "Auth" ? <AuthNavigation /> : 
-            <DrawerNavigation />
-          } */}
+            <BottomNavigation />
+          }
         </NavigationContainer>
     </PaperProvider>
   )

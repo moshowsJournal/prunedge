@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         marginTop : Height(2)
     },
     forgot : {
-        alignSelf : "flex-end",
+        alignSelf : "center",
         marginTop : Height(2)
     },
     social : {

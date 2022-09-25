@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, Keyboard } from 'react-native'
-import { TextInput } from 'react-native-paper'
+import { Checkbox, TextInput } from 'react-native-paper'
 import Button from '../../../utils/Button'
 import { BackHandler, Container, H1, P } from '../../../utils/components'
 import Images from '../../../utils/images'
@@ -22,10 +22,14 @@ interface RegisterProps{
 
 export default function Register({navigation} : RegisterProps){
     const dispatch = useDispatch()
+
+    const [checked,setChecked] = React.useState(false)
+    const [show,setShow] = React.useState(false)
+
     const [data,setData] = React.useState({
         full_name : "",
         email_address : "",
-        phone_number : ""
+        password : ""
     });
 
     const submitHandler = async () => {
@@ -34,21 +38,24 @@ export default function Register({navigation} : RegisterProps){
     }
     return(
         <Container>
-            <Container>
+            <Container direction='row' horizontalAlignment='space-between' marginTop={3}
+                verticalAlignment='center'
+                width={90}
+                alignSelf='center'
+            >
                 <TouchableWrapper onPress={()=>null}
                     size={5}
                 >
-                    <Ionicons name="close-outline" size={Width(3)} color={AppColors.gray} />
+                    <Ionicons name="close-outline" size={Width(7)} color={AppColors.primary} />
+                </TouchableWrapper>
+                <H1 fontSize={6}>Sign Up</H1>
+                <TouchableWrapper onPress={()=>null}
+                >
+                    <H1 color={AppColors.primary} fontSize={3.5}>Login</H1>
                 </TouchableWrapper>
             </Container>
             <KeyboardAwareScrollView>
-                <Container width={90} horizontalAlignment='center' alignSelf='center'>
-                    <Container horizontalAlignment='center' verticalAlignment='center'>
-                        <Image 
-                             source={{uri : Images.logo}}
-                            style={styles.logo}
-                        />
-                    </Container>
+                <Container width={90} horizontalAlignment='center' alignSelf='center' marginTop={3}>
                     <Container>
                         <Input label='Name' placeholder='Enter Full Name'
                             onChangeText={(value : string)=>setData({...data, full_name : value})}
@@ -66,28 +73,30 @@ export default function Register({navigation} : RegisterProps){
                         <Input label='Password' placeholder='*******'
                             keyboardType="default"
                             secureTextEntry={true}
-                            onChangeText={(value : string)=>setData({...data, phone_number : value})}
-                            value={data.phone_number}
+                            onChangeText={(value : string)=>setData({...data, password : value})}
+                            value={data.password}
+                            right={<TextInput.Icon 
+                            name={show ? "eye-off" : "eye"}
+                            color={AppColors.primary}
+                            onPress={()=>setShow(!show)}
+                            style={styles.icon}
+                        />}
                         />
                     </Container>
-                    <TouchableWrapper onPress={()=>navigation.goBack()} isText width={40} style={styles.forgot}>
-                        <H1 color={AppColors.primary} bold={600}>Go back to sign in?</H1>
-                    </TouchableWrapper>
-                    <Button text={"Register"} onPress={submitHandler} primaryColor={AppColors.primary} />
-                    <Container marginTop={4}>
-                        <Container direction='row' verticalAlignment='center' horizontalAlignment='space-between'
-                            width={70}
-                        >
-                            <Container width={28} height={0.2} backgroundColor={AppColors.primary} />
-                            <H1 fontSize={4} color={AppColors.primary}>OR</H1>
-                            <Container width={28} height={0.2} backgroundColor={AppColors.primary} />
+                    <Container direction='row' marginTop={3} marginBottom={3}
+                        verticalAlignment='flex-start'
+                    >
+                        <Checkbox color={AppColors.primary} onPress={()=>setChecked(!checked)}
+                            uncheckedColor={AppColors.gray}
+                            status={checked ? 'checked' : 'unchecked'}
+                        />
+                        <Container>
+                            <P fontSize={4} color={AppColors.gray3}>I would like to receive your newsletter and other promotional information.</P>
                         </Container>
                     </Container>
-                    <TouchableWrapper onPress={()=>null} isText style={styles.register}>
-                        <Container verticalAlignment='center' horizontalAlignment='center'>
-                            <P>By signing up, you are agreeing to our</P>
-                            <H1 color={AppColors.primary} marginLeft={1}>Terms and Conditions</H1>
-                        </Container>
+                    <Button text={"Sign Up"} onPress={submitHandler} primaryColor={AppColors.primary} />
+                    <TouchableWrapper onPress={()=>null} isText width={70} style={styles.forgot}>
+                        <H1 color={AppColors.primary} bold={600}>Already registered? Go to Login</H1>
                     </TouchableWrapper>
                 </Container>
             </KeyboardAwareScrollView>
